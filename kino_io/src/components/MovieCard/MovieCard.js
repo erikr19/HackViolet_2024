@@ -1,7 +1,9 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Box, Button } from '@mui/material';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faX, faCheck } from '@fortawesome/free-solid-svg-icons';
+import { faX, faCheck, faSpinner } from '@fortawesome/free-solid-svg-icons';
+import Image from 'material-ui-image';
+import AspectRatio from '@mui/joy/AspectRatio';
 
 
 
@@ -32,6 +34,14 @@ function MovieCard({
     setDislikedList
 }) {
 
+    const [displayMovieList, setDisplayMovieList] = useState([]);
+    const [currMovieIndex, setCurrMovieIndex] = useState(0);
+
+
+    useEffect(() => {
+        if(movieList.length != 0)
+            setDisplayMovieList(movieList.filter((movie) => !likedList.includes(movie) && !dislikedList.includes(movie)))
+    }, [movieList])
     const handleLiking = (currMovie) => {
         setLikedList(...likedList, currMovie)
     }
@@ -43,9 +53,17 @@ function MovieCard({
     return (
         <div style={movieCardStyle}>
             <Box component="div" sx={{ display: 'flex', flexDirection: 'column', border: '1px solid #ccc', borderRadius: '5px', height: '100%' }}>
-                <Box style={boxStyle}>
-                    Image Box
-                </Box>
+                {displayMovieList[currMovieIndex] != null && (
+                    <AspectRatio objectFit="contain">
+                        <img
+                    src={"https://image.tmdb.org/t/p/original" + displayMovieList[currMovieIndex].poster_path}
+                  />
+                    </AspectRatio>
+                    
+                )}
+                {displayMovieList[currMovieIndex] == null && (
+                    <FontAwesomeIcon icon={faSpinner} spinPulse />
+                )}
                 <Box style={boxStyle}>
                     Description Box
                     {/* get currMovie description and display */}

@@ -21,6 +21,17 @@ def get_movies():
     }
     response = requests.get(url, headers=headers)
     return response.content
+
+@app.route('/api/searchUnfiltered', methods=['GET'])
+def get_movies_unfiltered():
+    access_token = os.environ.get('READ_ACCESS_TOKEN')
+    url = "https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc"
+    headers = {
+        "accept": "application/json",
+        "Authorization": "Bearer "+access_token
+    }
+    response = requests.get(url, headers=headers)
+    return response.content
     
 
 if __name__ == '__main__':

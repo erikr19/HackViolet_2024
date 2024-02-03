@@ -8,11 +8,19 @@ import MovieCard from './components/MovieCard/MovieCard';
 function App() {
 
 
-  const [movieList, setMovieList] = useState();
-  const [likedList, setLikedList] = useState();
-  const [dislikedList, setDislikedList] = useState();
+  const [movieList, setMovieList] = useState([]);
+  const [likedList, setLikedList] = useState([]);
+  const [dislikedList, setDislikedList] = useState([]);
   const [selectedGenres, setSelectedGenres] = useState();
   const [selectedStreamingServices, setSelectedStreamingServices] = useState();
+
+  useEffect(() => {
+    axios.get('http://localhost:8000/api/searchUnfiltered')
+      .then(response => {
+        setMovieList(response.data.results)
+  
+      })
+  }, [])
   
   
 
