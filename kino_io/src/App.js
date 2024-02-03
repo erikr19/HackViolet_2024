@@ -1,24 +1,41 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
-function App() {
-  const [message, setMessage] = useState('');
+import SideMenu from './components/SideMenu/SideMenu';
+import MovieCard from './components/MovieCard/MovieCard';
 
-  useEffect(() => {
-    axios.get('http://localhost:8000/api/test')
-      .then(response => {
-        setMessage(response.data.message);
-      })
-      .catch(error => {
-        console.error('Error:', error);
-        setMessage('Error connecting to Flask backend.');
-      });
-  }, []);
+
+function App() {
+
+
+  const [movieList, setMovieList] = useState();
+  const [likedList, setLikedList] = useState();
+  const [dislikedList, setDislikedList] = useState();
+
+  // Stuff to test that the frontend and backend are connecting
+  // const [message, setMessage] = useState('');
+  // useEffect(() => {
+  //   axios.get('http://localhost:8000/api/test')
+  //     .then(response => {
+  //       setMessage(response.data.message);
+  //     })
+  //     .catch(error => {
+  //       console.error('Error:', error);
+  //       setMessage('Error connecting to Flask backend.');
+  //     });
+  // }, []);
 
   return (
-    <div className="App">
-      <h1>React and Flask Connectivity Test</h1>
-      <p>{message}</p>
+    <div style={{ display: 'flex' }}>
+      <SideMenu />
+      <MovieCard
+        movieList={movieList}
+        setMovieList={setMovieList}
+        likedList={likedList}
+        setLikedList={setLikedList}
+        dislikedList={dislikedList}
+        setDislikedList={setDislikedList}
+      />
     </div>
   );
 }
