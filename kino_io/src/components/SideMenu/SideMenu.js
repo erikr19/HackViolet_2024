@@ -9,6 +9,10 @@ function SideMenu({
     setSelectedGenres,
     selectedStreamingServices,
     setSelectedStreamingServices,
+    likedList,
+    setLikedList,
+    dislikedList,
+    setDislikedList
 }) {
 
     const [openMovieList, setOpenMovieList] = useState(false);
@@ -16,6 +20,8 @@ function SideMenu({
     const handleOpenMovieList = () => {
         // first we will pull all the liked movies of the selected user
         setOpenMovieList(true);
+        console.log(likedList);
+        console.log(dislikedList);
     }
 
     return (

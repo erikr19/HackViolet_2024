@@ -35,33 +35,51 @@ function MovieCard({
 }) {
 
     const [displayMovieList, setDisplayMovieList] = useState([]);
-    const [currMovieIndex, setCurrMovieIndex] = useState(0);
+    const [currMovie, setCurrMovie] = useState(0);
 
 
     useEffect(() => {
         if(movieList.length != 0)
             setDisplayMovieList(movieList.filter((movie) => !likedList.includes(movie) && !dislikedList.includes(movie)))
     }, [movieList])
-    const handleLiking = (currMovie) => {
-        setLikedList(...likedList, currMovie)
+
+    useEffect(() => {
+        if(displayMovieList != null && displayMovieList.length != 0)
+            setCurrMovie(displayMovieList[0])
+    }, [displayMovieList])
+
+    const handleLiking = () => {
+        const likedCopy = likedList.map((movie) => JSON.parse(JSON.stringify(movie)));
+        const currCopy = JSON.parse(JSON.stringify(currMovie));
+        likedCopy.push(currCopy);
+        setLikedList(likedCopy);
+        setDisplayMovieList(oldValues => {
+            return oldValues.filter((_, i) => i !== 0)
+          })
     }
 
-    const handleDisliking = (currMovie) => {
-        setDislikedList(...dislikedList, currMovie)
+    const handleDisliking = () => {
+        const dislikedCopy = dislikedList.map((movie) => JSON.parse(JSON.stringify(movie)));
+        const currCopy = JSON.parse(JSON.stringify(currMovie));
+        dislikedCopy.push(currCopy);
+        setDislikedList(dislikedCopy);
+        setDisplayMovieList(oldValues => {
+            return oldValues.filter((_, i) => i !== 0)
+          })
     }
 
     return (
         <div style={movieCardStyle}>
             <Box component="div" sx={{ display: 'flex', flexDirection: 'column', border: '1px solid #ccc', borderRadius: '5px', height: '100%' }}>
-                {displayMovieList[currMovieIndex] != null && (
+                {currMovie != null && (
                     <AspectRatio objectFit="contain">
                         <img
-                    src={"https://image.tmdb.org/t/p/original" + displayMovieList[currMovieIndex].poster_path}
+                    src={"https://image.tmdb.org/t/p/original" + currMovie.poster_path}
                   />
                     </AspectRatio>
                     
                 )}
-                {displayMovieList[currMovieIndex] == null && (
+                {currMovie == null && (
                     <FontAwesomeIcon icon={faSpinner} spinPulse />
                 )}
                 <Box style={boxStyle}>

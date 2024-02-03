@@ -44,6 +44,10 @@ function App() {
         setSelectedGenres={setSelectedGenres}
         selectedStreamingServices={selectedStreamingServices}
         setSelectedStreamingServices={setSelectedStreamingServices}
+        likedList={likedList}
+        setLikedList={setLikedList}
+        dislikedList={dislikedList}
+        setDislikedList={setDislikedList}
       />
       <MovieCard
         movieList={movieList}
