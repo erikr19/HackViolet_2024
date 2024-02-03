@@ -8,7 +8,7 @@ const movieListStyle = {
     marginBottom: '10px',
 };
 
-function MovieList() {
+function MovieListModal() {
     return (
         <div style={movieListStyle}>
             <Box component="div" sx={{ display: 'inline' }}>Movie List</Box>
@@ -16,4 +16,4 @@ function MovieList() {
     );
 }
 
-export default MovieList;
+export default MovieListModal;

@@ -1,21 +1,26 @@
 import React, { useState } from 'react';
-import { Box } from '@mui/material';
+import { Box, Button } from '@mui/material';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faX, faCheck } from '@fortawesome/free-solid-svg-icons';
+
+
+
 
 const movieCardStyle = {
-    width: '100%', // Set the width to 100% to ensure a fixed size within the parent container
-    maxWidth: '70%', // Limit the maximum width to 70% of the available space
-    padding: '5%', // Add 5% padding on all sides
+    width: '100%',
+    maxWidth: '70%',
+    padding: '5%',
     border: '1px solid #ccc',
     marginBottom: '10px',
 };
 
 const boxStyle = {
-    flex: '1', // This ensures each box takes up equal space
+    flex: '1',
     border: '1px solid #ccc',
     borderRadius: '5px',
     padding: '10px',
-    display: 'flex', // Added to ensure content inside is flex
-    flexDirection: 'column', // Adjust content direction
+    display: 'flex',
+    flexDirection: 'column',
 };
 
 function MovieCard({
@@ -45,6 +50,14 @@ function MovieCard({
                     Description Box
                     {/* get currMovie description and display */}
                     {/* two buttons, one to like and one to dislike */}
+                    <Box sx={{ display: 'flex', width: '100%', justifyContent: 'space-around', marginTop: 'auto' }}>
+                        <Button variant="outlined" color="error" onClick={handleDisliking} >
+                            <FontAwesomeIcon icon={faX} />
+                        </Button>
+                        <Button variant="outlined" color="success" onClick={handleLiking} >
+                            <FontAwesomeIcon icon={faCheck} />
+                        </Button>
+                    </Box>
                 </Box>
             </Box>
         </div>

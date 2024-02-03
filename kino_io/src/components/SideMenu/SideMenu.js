@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 import { Button, Container, CssBaseline, Grid } from '@mui/material';
 import FilterMenu from './FilterMenu';
-// import MovieList from './MovieList'; 
+// import MovieListModal from './MovieListModal'; 
 
 function SideMenu() {
 
