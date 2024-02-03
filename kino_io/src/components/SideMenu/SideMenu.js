@@ -4,7 +4,12 @@ import { Button, Container, CssBaseline, Grid } from '@mui/material';
 import FilterMenu from './FilterMenu';
 // import MovieListModal from './MovieListModal'; 
 
-function SideMenu() {
+function SideMenu({
+    selectedGenres,
+    setSelectedGenres,
+    selectedStreamingServices,
+    setSelectedStreamingServices,
+}) {
 
     const [openMovieList, setOpenMovieList] = useState(false);
 
@@ -22,7 +27,12 @@ function SideMenu() {
                         <Button onClick={handleOpenMovieList}>Open Movie List</Button>
                     </Grid>
                     <Grid item xs={12}>
-                        <FilterMenu />
+                        <FilterMenu 
+                            selectedGenres={selectedGenres}
+                            setSelectedGenres={setSelectedGenres}
+                            selectedStreamingServices={selectedStreamingServices}
+                            setSelectedStreamingServices={setSelectedStreamingServices}
+                        />
                     </Grid>
                 </Grid>
             </Container>

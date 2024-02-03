@@ -11,6 +11,10 @@ function App() {
   const [movieList, setMovieList] = useState();
   const [likedList, setLikedList] = useState();
   const [dislikedList, setDislikedList] = useState();
+  const [selectedGenres, setSelectedGenres] = useState();
+  const [selectedStreamingServices, setSelectedStreamingServices] = useState();
+  
+  
 
   // Stuff to test that the frontend and backend are connecting
   // const [message, setMessage] = useState('');
@@ -27,7 +31,12 @@ function App() {
 
   return (
     <div style={{ display: 'flex' }}>
-      <SideMenu />
+      <SideMenu 
+        selectedGenres={selectedGenres}
+        setSelectedGenres={setSelectedGenres}
+        selectedStreamingServices={selectedStreamingServices}
+        setSelectedStreamingServices={setSelectedStreamingServices}
+      />
       <MovieCard
         movieList={movieList}
         setMovieList={setMovieList}

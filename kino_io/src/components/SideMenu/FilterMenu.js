@@ -8,7 +8,21 @@ const filterMenuStyle = {
     padding: '10px',
 };
 
-function FilterMenu() {
+const genres = ["Action", "Adventure", "Animation", "Comedy", "Crime", 
+    "Documentary", "Drama", "Family", "Fantasy", 
+    "History", "Horror", "Music", "Mystery", "Romance", 
+    "Science Fiction", "TV Movie", "Thriller", "War", 
+    "Western"]
+  const streaming_services = ["Netflix", "Max", "Hulu", "Sling", "DisneyPlus", 
+  "Peacock", "ParamountPlus", "AppleTV", "Philo", "Freevee", "AMC"]
+
+function FilterMenu({
+    selectedGenres,
+    setSelectedGenres,
+    selectedStreamingServices,
+    setSelectedStreamingServices,
+
+}) {
     return (
         <div style={filterMenuStyle}>
             <Typography variant="h3" component="h4">
