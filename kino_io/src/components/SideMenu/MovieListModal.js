@@ -19,6 +19,13 @@ const style = {
     border: '2px solid #000',
     boxShadow: 24,
     p: 4,
+    '&::-webkit-scrollbar': {
+        width: '8px',
+    },
+    '&::-webkit-scrollbar-thumb': {
+        background: '#555',
+        borderRadius: '4px',
+    },
 };
 
 const tabStyle = {
