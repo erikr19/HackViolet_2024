@@ -46,8 +46,8 @@ function MovieCard({
     const [currMovie, setCurrMovie] = useState(0);
 
     useEffect(() => {
-        if (movieList.length !== 0)
-            setDisplayMovieList(movieList.filter((movie) => !likedList.includes(movie) && !dislikedList.includes(movie)));
+        if(movieList.length != 0)
+            setDisplayMovieList(movieList.filter((movie) => !likedList.find(temp => temp.id === movie.id) && !dislikedList.find(temp => temp.id === movie.id)))
     }, [movieList, likedList, dislikedList]);
 
     useEffect(() => {
