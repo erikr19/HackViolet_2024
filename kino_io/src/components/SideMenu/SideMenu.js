@@ -12,7 +12,13 @@ function SideMenu({
     likedList,
     setLikedList,
     dislikedList,
-    setDislikedList
+    setDislikedList,
+    selectedCountry,
+    setSelectedCountry,
+    selectedLanguage,
+    setSelectedLanguage,
+    handleApplyFilters,
+    handleClearFilters
 }) {
 
     const [openMovieList, setOpenMovieList] = useState(false);
@@ -23,14 +29,6 @@ function SideMenu({
         setOpenMovieList(true);
         console.log(likedList);
         console.log(dislikedList);
-    }
-
-    const handleApplyFilters = () => {
-
-    }
-
-    const handleClearFilters = () => {
-
     }
 
     const handleCloseMovieList = () => {
@@ -90,6 +88,10 @@ function SideMenu({
                             setSelectedGenres={setSelectedGenres}
                             selectedStreamingServices={selectedStreamingServices}
                             setSelectedStreamingServices={setSelectedStreamingServices}
+                            selectedCountry={selectedCountry}
+                            setSelectedCountry={setSelectedCountry}
+                            selectedLanguage={selectedLanguage}
+                            setSelectedLanguage={setSelectedLanguage}
                         />
                     </Grid>
                 </Grid>

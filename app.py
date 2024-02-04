@@ -1,4 +1,4 @@
-from flask import Flask, jsonify
+from flask import Flask, jsonify, request
 from flask_cors import CORS
 from dotenv import load_dotenv
 import os
@@ -33,6 +33,18 @@ def get_movies_unfiltered():
     response = requests.get(url, headers=headers)
     return response.content
     
+@app.route('/api/searchFiltered', methods=['POST'])
+def get_movies_filtered():
+    access_token = os.environ.get('READ_ACCESS_TOKEN')
+    data = request.json
+    url = data.get('currUrl')
+    headers = {
+        "accept": "application/json",
+        "Authorization": "Bearer "+access_token
+    }
+    response = requests.get(url, headers=headers)
+    print(url)
+    return response.content
 
 if __name__ == '__main__':
      app.run(port=8000, debug=True)

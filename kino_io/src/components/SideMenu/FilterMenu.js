@@ -4,8 +4,6 @@ import { FlagIcon } from "react-flag-kit";
 
 const filterMenuStyle = {
     flex: 1,
-    border: '1px solid #ccc',
-    borderRadius: '5px',
     padding: '10px',
 };
 
@@ -71,7 +69,7 @@ const getCountryCode = (language) => {
 };
 
 const getCountryName = (countryCode) => {
-    return countryNames[countryCode] || "Unknown Country";
+    return countryNames[countryCode] || "";
 };
 
 
@@ -82,23 +80,33 @@ function FilterMenu({
     setSelectedGenres,
     selectedStreamingServices,
     setSelectedStreamingServices,
+    selectedCountry,
+    setSelectedCountry,
+    selectedLanguage,
+    setSelectedLanguage
 }) {
     return (
         <div style={filterMenuStyle}>
             <Autocomplete
+                multiple
                 disablePortal
                 id="combo-box-demo"
                 options={genres}
                 sx={{ width: 300 }}
                 renderInput={(params) => <TextField {...params} label="Genre" />}
+                value={selectedGenres}
+                onChange={(_, newValue) => setSelectedGenres(newValue)}
             />
 
             <Autocomplete
+                multiple
                 disablePortal
                 id="combo-box-demo"
                 options={streamingServices}
                 sx={{ width: 300 }}
                 renderInput={(params) => <TextField {...params} label="Streaming Service" />}
+                value={selectedStreamingServices}
+                onChange={(_, newValue) => setSelectedStreamingServices(newValue)}
             />
 
             <Autocomplete
@@ -118,11 +126,9 @@ function FilterMenu({
                         </span>
                     </li>
                 )}
+                value={selectedCountry}
                 getOptionLabel={(option) => `${getCountryName(option)}`}
-                onChange={(event, newValue) => {
-                    // handle the selected value, countryCode
-                    // setter(newValue)
-                }}
+                onChange={(_, newValue) => setSelectedCountry(newValue)}
             />
 
 
@@ -143,11 +149,9 @@ function FilterMenu({
                         </span>
                     </li>
                 )}
+                value={selectedLanguage}
                 getOptionLabel={(option) => `${option}`}
-                onChange={(event, newValue) => {
-                    // handle the selected value, language
-                    // setter(newValue)
-                }}
+                onChange={(_, newValue) => setSelectedLanguage(newValue)}
             />
 
         </div>
