@@ -13,8 +13,8 @@ const genres = ["Action", "Adventure", "Animation", "Comedy", "Crime",
     "Science Fiction", "TV Movie", "Thriller", "War",
     "Western"]
 
-const streamingServices = ["Netflix", "Max", "Hulu", "Sling", "DisneyPlus",
-    "Peacock", "ParamountPlus", "AppleTV", "Philo", "Freevee", "AMC"]
+const streamingServices = ["Netflix", "Max", "Hulu", "DisneyPlus",
+    "Peacock", "ParamountPlus", "AppleTV", "AMC+"]
 
 const countryCodes = ["US", "CA", "GB", "AU", "DE", "FR", "NL", "BR", "CZ",
     "ES", "IT", "MX", "IN", "JP", "SE", "NO", "DK", "RU", "ZA", "KR", "CN", "SG",

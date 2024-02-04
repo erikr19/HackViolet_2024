@@ -85,7 +85,19 @@ function App() {
       { "id": "ga", "language": "Irish" },
       { "id": "fi", "language": "Finnish" }
     ]
-    let currUrl = "https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc";
+
+    const streaming = [
+      {"id": "8", "service": "Netflix"},
+      {"id": "1899", "service": "Max"},
+      {"id": "15", "service": "Hulu"},
+      {"id": "337", "service": "DisneyPlus"},
+      {"id": "386", "service": "Peacock"},
+      {"id" : "531", "service": "ParamountPlus"},
+      {"id": "2", "service": "AppleTV"},
+      {"id": "526", "service": "AMC+"},
+  ]
+
+    let currUrl = "https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&watch_region=US";
     if (selectedLanguage !== "") {
       currUrl = currUrl + "&with_original_language=" + languages.find(temp => temp.language === selectedLanguage).id;
     }
@@ -103,13 +115,16 @@ function App() {
       })
     }
     if (selectedStreamingServices.length === 1) {
-      currUrl = currUrl + "&with_watch_providers=" + selectedStreamingServices[0];
+      const tempStream = streaming.find(temp => temp.service === selectedStreamingServices[0])
+
+      currUrl = currUrl + "&with_watch_providers=" + tempStream.id;
     }
     else if (selectedStreamingServices.length > 1) {
       currUrl = currUrl + "&with_watch_providers=" + selectedStreamingServices[0];
-      selectedStreamingServices.map((service, i) => {
+      selectedGenres.map((stream, i) => {
         if (i != 0) {
-          currUrl = currUrl + "%7C" + service;
+          const tempStream = streaming.find(temp => temp.name === stream)
+          currUrl = currUrl + "%7C" + tempStream.id;
         }
       })
     }
