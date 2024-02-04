@@ -82,8 +82,8 @@ function MovieCard({
                 {currMovie == null && (
                     <FontAwesomeIcon icon={faSpinner} spinPulse />
                 )}
-                <Box style={boxStyle}>
-                    Description Box
+                {currMovie !== null && (<Box style={boxStyle}>
+                    {currMovie.overview}
                     {/* get currMovie description and display */}
                     {/* two buttons, one to like and one to dislike */}
                     <Box sx={{ display: 'flex', width: '100%', justifyContent: 'space-around', marginTop: 'auto' }}>
@@ -95,6 +95,7 @@ function MovieCard({
                         </Button>
                     </Box>
                 </Box>
+                )}
             </Box>
         </div>
     );
