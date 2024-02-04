@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 import { Button, Container, CssBaseline, Grid } from '@mui/material';
 import FilterMenu from './FilterMenu';
-// import MovieListModal from './MovieListModal'; 
+import MovieListModal from './MovieListModal';
 
 function SideMenu({
     selectedGenres,
@@ -16,6 +16,7 @@ function SideMenu({
 }) {
 
     const [openMovieList, setOpenMovieList] = useState(false);
+
 
     const handleOpenMovieList = () => {
         // first we will pull all the liked movies of the selected user
@@ -32,6 +33,10 @@ function SideMenu({
 
     }
 
+    const handleCloseMovieList = () => {
+        setOpenMovieList(false);
+    }
+
     return (
         <div style={{ width: '30%', height: '100vh', border: '1px solid #ccc', borderRadius: '5px' }}>
             <Container maxWidth="lg" className="app">
@@ -45,7 +50,16 @@ function SideMenu({
                         >
                             Open Movie List
                         </Button>
+                        <MovieListModal
+                            likedMovies={likedList}
+                            dislikedMovies={dislikedList}
+                            open={openMovieList}
+                            onClose={handleCloseMovieList}
+                            setLikedList={setLikedList}
+                            setDislikedList={setDislikedList}
+                        />
                     </Grid>
+
                     <Grid item xs={12}>
                         <Grid container spacing={2} direction="column" alignItems="center" justifyContent="center">
                             <Grid item container direction="row" spacing={2} justifyContent="center">
