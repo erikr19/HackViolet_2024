@@ -44,7 +44,7 @@ function SideMenu({
                             selectedStreamingServices={selectedStreamingServices}
                             setSelectedStreamingServices={setSelectedStreamingServices}
                             selectedCountry={selectedCountry}
-                            setSelectedCountry={selectedCountry}
+                            setSelectedCountry={setSelectedCountry}
                             selectedLanguage={selectedLanguage}
                             setSelectedLanguage={setSelectedLanguage}
                         />
