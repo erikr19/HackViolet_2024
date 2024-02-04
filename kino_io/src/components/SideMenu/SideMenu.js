@@ -24,16 +24,54 @@ function SideMenu({
         console.log(dislikedList);
     }
 
+    const handleApplyFilters = () => {
+
+    }
+
+    const handleClearFilters = () => {
+
+    }
+
     return (
         <div style={{ width: '30%', height: '100vh', border: '1px solid #ccc', borderRadius: '5px' }}>
             <Container maxWidth="lg" className="app">
                 <CssBaseline />
                 <Grid container spacing={0}>
-                    <Grid item xs={12}>
-                        <Button onClick={handleOpenMovieList}>Open Movie List</Button>
+                    <Grid container spacing={0} direction="column" alignItems="center" justifyContent="center">
+                        <Button
+                            onClick={handleOpenMovieList}
+                            variant="contained"
+                            style={{ backgroundColor: 'blue', color: 'white' }}
+                        >
+                            Open Movie List
+                        </Button>
                     </Grid>
                     <Grid item xs={12}>
-                        <FilterMenu 
+                        <Grid container spacing={2} direction="column" alignItems="center" justifyContent="center">
+                            <Grid item container direction="row" spacing={2} justifyContent="center">
+                                <Grid item>
+                                    <Button
+                                        onClick={handleApplyFilters}
+                                        variant="contained"
+                                        style={{ backgroundColor: 'green', color: 'white' }}
+                                    >
+                                        Apply Filters
+                                    </Button>
+                                </Grid>
+                                <Grid item>
+                                    <Button
+                                        onClick={handleClearFilters}
+                                        variant="contained"
+                                        style={{ backgroundColor: 'red', color: 'white' }}
+                                    >
+                                        Clear Filters
+                                    </Button>
+                                </Grid>
+                            </Grid>
+                        </Grid>
+
+
+                        <FilterMenu
                             selectedGenres={selectedGenres}
                             setSelectedGenres={setSelectedGenres}
                             selectedStreamingServices={selectedStreamingServices}
