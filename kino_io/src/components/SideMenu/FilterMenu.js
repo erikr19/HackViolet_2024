@@ -1,5 +1,5 @@
 import React from 'react';
-import { Autocomplete, TextField } from '@mui/material';
+import { Autocomplete, TextField, Paper } from '@mui/material';
 import { FlagIcon } from "react-flag-kit";
 
 const filterMenuStyle = {
@@ -74,7 +74,6 @@ const getCountryName = (countryCode) => {
 
 
 
-
 function FilterMenu({
     selectedGenres,
     setSelectedGenres,
@@ -90,38 +89,100 @@ function FilterMenu({
             <Autocomplete
                 multiple
                 disablePortal
-                id="combo-box-demo"
+                id="genres-autocomplete"
                 options={genres}
-                sx={{ width: 300 }}
-                renderInput={(params) => <TextField {...params} label="Genre" />}
+                sx={{
+                    width: 300,
+                    "& .MuiOutlinedInput-root": { color: "white" },
+                    "& .MuiInputLabel-root": { color: "white" },
+                    "& .MuiSvgIcon-root": { color: "white" },
+                    "& .MuiAutocomplete-tag": { color: "white" },
+                    '& .MuiAutocomplete-paper': {
+                        '&::-webkit-scrollbar': {
+                            width: '8px',
+                        },
+                        '&::-webkit-scrollbar-thumb': {
+                            background: '#555',
+                            borderRadius: '4px',
+                        },
+                    },
+                }}
+                PaperComponent={({ children, ...other }) => (
+                    <Paper
+                        {...other}
+                        style={{ backgroundColor: '#000', color: 'white' }}
+                    >
+                        {children}
+                    </Paper>
+                )}
+                renderInput={(params) => <TextField {...params} label="Genre" InputLabelProps={{ style: { color: 'white' } }} />}
                 value={selectedGenres}
                 onChange={(_, newValue) => setSelectedGenres(newValue)}
             />
 
+
             <Autocomplete
                 multiple
                 disablePortal
-                id="combo-box-demo"
+                id="streaming-services-autocomplete"
                 options={streamingServices}
-                sx={{ width: 300 }}
-                renderInput={(params) => <TextField {...params} label="Streaming Service" />}
+                sx={{
+                    width: 300,
+                    "& .MuiOutlinedInput-root": { color: "white" },
+                    "& .MuiInputLabel-root": { color: "white" },
+                    "& .MuiSvgIcon-root": { color: "white" },
+                    "& .MuiAutocomplete-tag": { color: "white" },
+                    '& .MuiAutocomplete-paper': {
+                        '&::-webkit-scrollbar': {
+                            width: '8px',
+                        },
+                        '&::-webkit-scrollbar-thumb': {
+                            background: '#555',
+                            borderRadius: '4px',
+                        },
+                    },
+                }}
+                PaperComponent={({ children, ...other }) => (
+                    <Paper
+                        {...other}
+                        style={{ backgroundColor: '#000', color: 'white' }}
+                    >
+                        {children}
+                    </Paper>
+                )}
+                renderInput={(params) => <TextField {...params} label="Streaming Service" InputLabelProps={{ style: { color: 'white' } }} />}
                 value={selectedStreamingServices}
                 onChange={(_, newValue) => setSelectedStreamingServices(newValue)}
             />
+
 
             <Autocomplete
                 disablePortal
                 id="combo-box-demo"
                 options={countryCodes}
-                sx={{ width: 300 }}
-                renderInput={(params) => <TextField {...params} label="Country" />}
+                sx={{
+                    width: 300,
+                    "& .MuiOutlinedInput-root": { color: "white" },
+                    "& .MuiInputLabel-root": { color: "white" },
+                    "& .MuiSvgIcon-root": { color: "white" },
+                    "& .MuiAutocomplete-tag": { color: "white" },
+                    '&::-webkit-scrollbar': {
+                        width: '8px',
+                    },
+                    '&::-webkit-scrollbar-thumb': {
+                        background: '#555',
+                        borderRadius: '4px',
+                    },
+                }}
+                PaperComponent={({ children }) => <Paper style={{ backgroundColor: '#000', color: '#000' }}>{children}</Paper>}
+                renderInput={(params) => <TextField {...params} label="Country" InputLabelProps={{ style: { color: 'white' } }} />}
                 renderOption={(props, option) => (
                     <li {...props} style={{ display: 'flex', alignItems: 'center', padding: '8px 12px' }}>
                         <FlagIcon
                             code={option}
                             size={24}
                         />
-                        <span style={{ marginLeft: '8px' }}>
+                        <span style={{ marginLeft: '8px', color: 'white' }}>
                             {option} - {getCountryName(option)}
                         </span>
                     </li>
@@ -136,10 +197,24 @@ function FilterMenu({
                 disablePortal
                 id="combo-box-demo"
                 options={languages}
-                sx={{ width: 300 }}
-                renderInput={(params) => <TextField {...params} label="Language" />}
+                sx={{
+                    width: 300,
+                    "& .MuiOutlinedInput-root": { color: "white" },
+                    "& .MuiInputLabel-root": { color: "white" },
+                    "& .MuiSvgIcon-root": { color: "white" },
+                    "& .MuiAutocomplete-tag": { color: "white" },
+                    '&::-webkit-scrollbar': {
+                        width: '8px',
+                    },
+                    '&::-webkit-scrollbar-thumb': {
+                        background: '#555',
+                        borderRadius: '4px',
+                    },
+                }}
+                PaperComponent={({ children }) => <Paper style={{ backgroundColor: '#000', color: '#000' }}>{children}</Paper>}
+                renderInput={(params) => <TextField {...params} label="Language" InputLabelProps={{ style: { color: 'white' } }} />}
                 renderOption={(props, option) => (
-                    <li {...props} style={{ display: 'flex', alignItems: 'center', padding: '8px 12px' }}>
+                    <li {...props} style={{ display: 'flex', alignItems: 'center', padding: '8px 12px', color: 'white' }}>
                         <FlagIcon
                             code={getCountryCode(option)}
                             size={24}
@@ -159,3 +234,4 @@ function FilterMenu({
 }
 
 export default FilterMenu;
+
