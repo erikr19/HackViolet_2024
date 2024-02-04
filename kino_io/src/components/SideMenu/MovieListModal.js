@@ -14,10 +14,21 @@ const style = {
     width: 500,
     maxHeight: '80vh',
     overflowY: 'auto',
-    bgcolor: 'background.paper',
+    bgcolor: '#333',
+    color: 'white',
     border: '2px solid #000',
     boxShadow: 24,
     p: 4,
+};
+
+const tabStyle = {
+    backgroundColor: '#222',
+    color: 'white',
+};
+
+const selectedTabStyle = {
+    backgroundColor: 'white',
+    color: 'black',
 };
 
 const movieEntryStyle = {
@@ -29,6 +40,14 @@ const movieEntryStyle = {
 const movieTitleStyle = {
     fontSize: '18px',
     fontWeight: 'bold',
+};
+
+const buttonStyle = {
+    color: 'white',
+    backgroundColor: '#333',
+    '&:hover': {
+        backgroundColor: '#555',
+    },
 };
 
 export default function MovieListModal({
@@ -70,10 +89,26 @@ export default function MovieListModal({
                         indicatorColor="primary"
                         textColor="primary"
                         aria-label="Movie Tabs"
+                        sx={tabStyle}
                     >
-                        <Tab label="Liked" />
-                        <Tab label="Disliked" />
+                        <Tab
+                            label="Liked"
+                            sx={
+                                selectedTab === 0
+                                    ? { ...selectedTabStyle, ...tabStyle }
+                                    : tabStyle
+                            }
+                        />
+                        <Tab
+                            label="Disliked"
+                            sx={
+                                selectedTab === 1
+                                    ? { ...selectedTabStyle, ...tabStyle }
+                                    : tabStyle
+                            }
+                        />
                     </Tabs>
+
                     {selectedTab === 0 && (
                         <div>
                             {likedMovies.length === 0 ? (
@@ -97,8 +132,8 @@ export default function MovieListModal({
                                                 onClick={() =>
                                                     moveMovie(movie, likedMovies, dislikedMovies)
                                                 }
-                                                variant="outlined"
-                                                color="primary"
+                                                variant="contained"
+                                                sx={buttonStyle}
                                             >
                                                 Move to Disliked
                                             </Button>
@@ -131,8 +166,8 @@ export default function MovieListModal({
                                                 onClick={() =>
                                                     moveMovie(movie, dislikedMovies, likedMovies)
                                                 }
-                                                variant="outlined"
-                                                color="primary"
+                                                variant="contained"
+                                                sx={buttonStyle}
                                             >
                                                 Move to Liked
                                             </Button>
