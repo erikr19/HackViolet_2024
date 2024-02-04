@@ -22,10 +22,7 @@ function SideMenu({
     const [openMovieList, setOpenMovieList] = useState(false);
 
     const handleOpenMovieList = () => {
-        // first we will pull all the liked movies of the selected user
         setOpenMovieList(true);
-        console.log(likedList);
-        console.log(dislikedList);
     };
 
     const handleCloseMovieList = () => {
@@ -37,6 +34,9 @@ function SideMenu({
             <Container maxWidth="lg" className="app">
                 <CssBaseline />
                 <Grid container spacing={0} direction="column" alignItems="center" justifyContent="space-between" style={{ flex: '1' }}>
+                    <Grid item style={{ width: '100%', display: 'flex', justifyContent: 'center', marginTop: '20px' }}>
+                        <img src="kino.png" alt="Kino" style={{ maxWidth: '100%', height: 'auto' }} />
+                    </Grid>
                     <Grid item>
                         <FilterMenu
                             selectedGenres={selectedGenres}
@@ -44,7 +44,7 @@ function SideMenu({
                             selectedStreamingServices={selectedStreamingServices}
                             setSelectedStreamingServices={setSelectedStreamingServices}
                             selectedCountry={selectedCountry}
-                            setSelectedCountry={setSelectedCountry}
+                            setSelectedCountry={selectedCountry}
                             selectedLanguage={selectedLanguage}
                             setSelectedLanguage={setSelectedLanguage}
                         />
